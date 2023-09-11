@@ -1,0 +1,8 @@
+carlodelgado\test\CambiomonedaApplication.class
+carlodelgado\test\model\MonedaOrigen.class
+carlodelgado\test\repository\CambioMonedaRepository.class
+carlodelgado\test\model\TipoCambioxMonedaOrigen.class
+carlodelgado\test\model\Usuario.class
+carlodelgado\test\controller\CambioMonedaController.class
+carlodelgado\test\model\TipoCambio.class
+carlodelgado\test\service\CambioMonedaService.class

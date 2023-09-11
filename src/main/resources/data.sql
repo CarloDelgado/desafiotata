@@ -1,0 +1,1 @@
+INSERT INTO USUARIO (name, monto) VALUES ('Carlo Deglado', 200) ;
