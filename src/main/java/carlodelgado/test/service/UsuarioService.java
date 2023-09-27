@@ -16,7 +16,6 @@ public interface UsuarioService {
 	void elimina(Usuario Usuario);
 
 	void eliminar(int idUsuario);
-
 	
 	Usuario get(int usuarioId);
 	
