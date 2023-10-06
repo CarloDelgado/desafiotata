@@ -22,6 +22,8 @@ public class Usuario {
 	
 	Double monto;
 	
+	
+	
 }
 
 

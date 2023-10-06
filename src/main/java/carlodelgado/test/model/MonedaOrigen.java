@@ -1,5 +1,7 @@
 package carlodelgado.test.model;
 
+import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,6 +18,8 @@ public class MonedaOrigen {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	int id;
 
-	String pais;
+	String pais ;
+	
+	Date fecha_creacion;
 
 }
