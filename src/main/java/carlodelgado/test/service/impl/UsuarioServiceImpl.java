@@ -9,21 +9,21 @@ import carlodelgado.test.repository.UsuarioRepository;
 import carlodelgado.test.service.UsuarioService;
 
 @Service
-public class UsuarioServiceImpl  implements UsuarioService {
+public class UsuarioServiceImpl implements UsuarioService {
 
 	@Autowired
 	UsuarioRepository usuarioRepository;
-	
+
 	@Override
 	public void inserta(Usuario usuario) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public List<Usuario> buscarTodas() {
 		// TODO Auto-generated method stub
-		return usuarioRepository.findAll() ;
+		return usuarioRepository.findAll();
 	}
 
 	@Override
@@ -35,7 +35,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
 	@Override
 	public void actualiza(Usuario usuario) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -47,7 +47,7 @@ public class UsuarioServiceImpl  implements UsuarioService {
 	@Override
 	public void eliminar(int idUsuario) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@SuppressWarnings("deprecation")
@@ -55,6 +55,12 @@ public class UsuarioServiceImpl  implements UsuarioService {
 	public Usuario get(int usuarioId) {
 		// TODO Auto-generated method stub
 		return usuarioRepository.getById(usuarioId);
+	}
+
+	@Override
+	public Usuario guardarusuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.save(usuario);
 	}
 
 }

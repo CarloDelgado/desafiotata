@@ -1619,3 +1619,164 @@ The connection was not closed by the application and is garbage collected [90018
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:678)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
 	... 92 more
+2023-10-07 00:04:01 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "SELECT * FROM TIPOCAMBIOXMONEDAORIGEN TIPOCAMBIO [*]MONEDAORIGEN"
+Syntax error in SQL statement "SELECT * FROM TIPOCAMBIOXMONEDAORIGEN TIPOCAMBIO [*]MONEDAORIGEN"; SQL statement:
+SELECT * FROM TIPOCAMBIOXMONEDAORIGEN TIPOCAMBIO MONEDAORIGEN [42000-214]
+2023-10-07 00:15:57 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLNonTransientException: Tipo de dato desconocido : "FK_CODIGO_MONEDAORIGEN"
+Unknown data type: "FK_CODIGO_MONEDAORIGEN"; SQL statement:
+create table TIPOCAMBIOXMONEDAORIGEN(
+codigo_cambioxmoneda int not null auto_increment,
+fkcodigo_monedaorigen int,
+fkcodigo_tipocambio int,
+
+`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,
+index fk_codigo_monedaorigen(fkcodigo_monedaorigen),
+index fk_codigo_tipocambio(fkcodigo_tipocambio),
+
+primary key (codigo_cambioxmoneda),
+foreign key (fkcodigo_monedaorigen)
+references monedaorigen(id),
+foreign key (fkcodigo_tipocambio)
+references tipocambio(id),
+
+on DELETE CASCADE
+on UPDATE CASCADE
+) ENGINE= INNODB [50004-214]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:554)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:477)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.command.Parser.readIfDataType1(Parser.java:6249)
+	at org.h2.command.Parser.readIfDataType(Parser.java:6087)
+	at org.h2.command.Parser.parseColumnWithType(Parser.java:6069)
+	at org.h2.command.Parser.parseColumnForTable(Parser.java:5948)
+	at org.h2.command.Parser.parseTableColumnDefinition(Parser.java:9331)
+	at org.h2.command.Parser.parseCreateTable(Parser.java:9271)
+	at org.h2.command.Parser.parseCreate(Parser.java:6784)
+	at org.h2.command.Parser.parsePrepared(Parser.java:763)
+	at org.h2.command.Parser.parse(Parser.java:689)
+	at org.h2.command.Parser.parse(Parser.java:661)
+	at org.h2.command.Parser.prepareCommand(Parser.java:569)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:631)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:554)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1116)
+	at org.h2.jdbc.JdbcStatement.executeInternal(JdbcStatement.java:237)
+	at org.h2.jdbc.JdbcStatement.execute(JdbcStatement.java:223)
+	at org.h2.server.web.WebApp.getResult(WebApp.java:1339)
+	at org.h2.server.web.WebApp.query(WebApp.java:1137)
+	at org.h2.server.web.WebApp.query(WebApp.java:1113)
+	at org.h2.server.web.WebApp.process(WebApp.java:244)
+	at org.h2.server.web.WebApp.processRequest(WebApp.java:176)
+	at org.h2.server.web.WebServlet.doGet(WebServlet.java:129)
+	at org.h2.server.web.WebServlet.doPost(WebServlet.java:166)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:555)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:623)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:209)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:51)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:178)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:153)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:481)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:130)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:390)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:926)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1790)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+2023-10-07 00:17:28 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table TIPOCAMBIOXMONEDAORIGEN(\000d\000acodigo_cambioxmoneda int not null auto_increment,\000d\000afkcodigo_monedaorigen int,\000d\000afkcodigo_tipocambio int,\000d\000a`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,\000d\000aprimary key (codigo_cambioxmoneda),\000d\000aforeign key (fkcodigo_monedaorigen)\000d\000areferences monedaorigen(id),\000d\000aforeign key (fkcodigo_tipocambio)\000d\000areferences tipocambio(id),\000d\000a\000d\000a[*]on DELETE CASCADE\000d\000aon UPDATE CASCADE\000d\000a) ENGINE= INNODB"; se esperaba "identifier"
+Syntax error in SQL statement "create table TIPOCAMBIOXMONEDAORIGEN(\000d\000acodigo_cambioxmoneda int not null auto_increment,\000d\000afkcodigo_monedaorigen int,\000d\000afkcodigo_tipocambio int,\000d\000a`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,\000d\000aprimary key (codigo_cambioxmoneda),\000d\000aforeign key (fkcodigo_monedaorigen)\000d\000areferences monedaorigen(id),\000d\000aforeign key (fkcodigo_tipocambio)\000d\000areferences tipocambio(id),\000d\000a\000d\000a[*]on DELETE CASCADE\000d\000aon UPDATE CASCADE\000d\000a) ENGINE= INNODB"; expected "identifier"; SQL statement:
+create table TIPOCAMBIOXMONEDAORIGEN(
+codigo_cambioxmoneda int not null auto_increment,
+fkcodigo_monedaorigen int,
+fkcodigo_tipocambio int,
+`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,
+primary key (codigo_cambioxmoneda),
+foreign key (fkcodigo_monedaorigen)
+references monedaorigen(id),
+foreign key (fkcodigo_tipocambio)
+references tipocambio(id),
+
+on DELETE CASCADE
+on UPDATE CASCADE
+) ENGINE= INNODB [42001-214]
+2023-10-07 00:20:15 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table TIPOCAMBIOXMONEDAORIGEN(\000d\000acodigo_cambioxmoneda int not null auto_increment,\000d\000afkcodigo_monedaorigen int,\000d\000afkcodigo_tipocambio int,\000d\000a\000d\000a`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,\000d\000a\000d\000a\000d\000aprimary key (codigo_cambioxmoneda),\000d\000aforeign key (fkcodigo_monedaorigen)\000d\000areferences monedaorigen(id),\000d\000aforeign key (fkcodigo_tipocambio)\000d\000areferences tipocambio(id),\000d\000a\000d\000a\000d\000a[*])"; se esperaba "identifier"
+Syntax error in SQL statement "create table TIPOCAMBIOXMONEDAORIGEN(\000d\000acodigo_cambioxmoneda int not null auto_increment,\000d\000afkcodigo_monedaorigen int,\000d\000afkcodigo_tipocambio int,\000d\000a\000d\000a`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,\000d\000a\000d\000a\000d\000aprimary key (codigo_cambioxmoneda),\000d\000aforeign key (fkcodigo_monedaorigen)\000d\000areferences monedaorigen(id),\000d\000aforeign key (fkcodigo_tipocambio)\000d\000areferences tipocambio(id),\000d\000a\000d\000a\000d\000a[*])"; expected "identifier"; SQL statement:
+create table TIPOCAMBIOXMONEDAORIGEN(
+codigo_cambioxmoneda int not null auto_increment,
+fkcodigo_monedaorigen int,
+fkcodigo_tipocambio int,
+
+`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,
+
+
+primary key (codigo_cambioxmoneda),
+foreign key (fkcodigo_monedaorigen)
+references monedaorigen(id),
+foreign key (fkcodigo_tipocambio)
+references tipocambio(id),
+
+
+) [42001-214]
+2023-10-07 00:22:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table TIPOCAMBIOXMONEDAORIGEN(\000d\000acodigo_cambioxmoneda IDENTITY NOT NULL PRIMARY KEY ,  -- ⬅ `identity` = auto-incrementing long integer.\000d\000afkcodigo_monedaorigen int,\000d\000afkcodigo_tipocambio int,\000d\000a\000d\000a`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,\000d\000a\000d\000a\000d\000aprimary key (codigo_cambioxmoneda),\000d\000aforeign key (fkcodigo_monedaorigen)\000d\000areferences monedaorigen(id),\000d\000aforeign key (fkcodigo_tipocambio)\000d\000areferences tipocambio(id),\000d\000a\000d\000a\000d\000a[*])"; se esperaba "identifier"
+Syntax error in SQL statement "create table TIPOCAMBIOXMONEDAORIGEN(\000d\000acodigo_cambioxmoneda IDENTITY NOT NULL PRIMARY KEY ,  -- ⬅ `identity` = auto-incrementing long integer.\000d\000afkcodigo_monedaorigen int,\000d\000afkcodigo_tipocambio int,\000d\000a\000d\000a`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,\000d\000a\000d\000a\000d\000aprimary key (codigo_cambioxmoneda),\000d\000aforeign key (fkcodigo_monedaorigen)\000d\000areferences monedaorigen(id),\000d\000aforeign key (fkcodigo_tipocambio)\000d\000areferences tipocambio(id),\000d\000a\000d\000a\000d\000a[*])"; expected "identifier"; SQL statement:
+create table TIPOCAMBIOXMONEDAORIGEN(
+codigo_cambioxmoneda IDENTITY NOT NULL PRIMARY KEY ,  -- ⬅ `identity` = auto-incrementing long integer.
+fkcodigo_monedaorigen int,
+fkcodigo_tipocambio int,
+
+`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,
+
+
+primary key (codigo_cambioxmoneda),
+foreign key (fkcodigo_monedaorigen)
+references monedaorigen(id),
+foreign key (fkcodigo_tipocambio)
+references tipocambio(id),
+
+
+) [42001-214]
+2023-10-07 00:23:11 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Error de Sintaxis en sentencia SQL "create table TIPOCAMBIOXMONEDAORIGEN(\000d\000acodigo_cambioxmoneda int  auto_increment,\000d\000afkcodigo_monedaorigen int,\000d\000afkcodigo_tipocambio int,\000d\000a\000d\000a`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,\000d\000a\000d\000a\000d\000aprimary key (codigo_cambioxmoneda),\000d\000aforeign key (fkcodigo_monedaorigen)\000d\000areferences monedaorigen(id),\000d\000aforeign key (fkcodigo_tipocambio)\000d\000areferences tipocambio(id),\000d\000a\000d\000a\000d\000a[*])"; se esperaba "identifier"
+Syntax error in SQL statement "create table TIPOCAMBIOXMONEDAORIGEN(\000d\000acodigo_cambioxmoneda int  auto_increment,\000d\000afkcodigo_monedaorigen int,\000d\000afkcodigo_tipocambio int,\000d\000a\000d\000a`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,\000d\000a\000d\000a\000d\000aprimary key (codigo_cambioxmoneda),\000d\000aforeign key (fkcodigo_monedaorigen)\000d\000areferences monedaorigen(id),\000d\000aforeign key (fkcodigo_tipocambio)\000d\000areferences tipocambio(id),\000d\000a\000d\000a\000d\000a[*])"; expected "identifier"; SQL statement:
+create table TIPOCAMBIOXMONEDAORIGEN(
+codigo_cambioxmoneda int  auto_increment,
+fkcodigo_monedaorigen int,
+fkcodigo_tipocambio int,
+
+`fecha_creacion` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP null,
+
+
+primary key (codigo_cambioxmoneda),
+foreign key (fkcodigo_monedaorigen)
+references monedaorigen(id),
+foreign key (fkcodigo_tipocambio)
+references tipocambio(id),
+
+
+) [42001-214]

@@ -11,6 +11,8 @@ public interface UsuarioService {
 
 	void guardar(Usuario usuario);
 
+	Usuario guardarusuario(Usuario usuario);
+	
 	void actualiza(Usuario usuario);
 
 	void elimina(Usuario Usuario);
