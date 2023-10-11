@@ -21,5 +21,7 @@ public interface UsuarioService {
 	
 	Usuario get(int usuarioId);
 	
+	Usuario actualizarusuario(Usuario usuario);
+	
 
 }

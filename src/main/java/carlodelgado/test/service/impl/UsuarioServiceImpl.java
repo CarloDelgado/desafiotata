@@ -63,4 +63,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return usuarioRepository.save(usuario);
 	}
 
+	@Override
+	public Usuario actualizarusuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		return usuarioRepository.save(usuario);
+	}
+
 }

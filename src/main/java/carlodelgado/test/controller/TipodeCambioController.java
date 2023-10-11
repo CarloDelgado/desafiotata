@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureOrder;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.StreamingHttpOutputMessage.Body;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import carlodelgado.test.model.TipoCambio;
 import carlodelgado.test.model.TipoCambioxMonedaOrigen;
@@ -71,18 +73,17 @@ public class TipodeCambioController {
 	
 	
 	
-	@PutMapping(value = "/update/{idUsuario}")
+	@PutMapping( "/update/{idusuario}")
 	
-	public ResponseEntity<?> actualizarusuario(@PathVariable int idUsuario ,@RequestBody Usuario usuario )
-	
-	{usuarioservice.actualiza(usuarioservice.get(idUsuario));
-	
-	 
-	
-	
-	System.out.println("actualizado");	
-	return ResponseEntity.accepted().build();
+	public ResponseEntity<Usuario> updateusuarios(  @PathVariable int idusuario , @RequestBody  Usuario usuario ) {
 		
+		usuario.setId(idusuario);
+		Usuario usuarios = new Usuario();
+		usuarios = usuarioservice.get(idusuario);
+		usuarios.setName(usuario.getName());
+		
+	return ResponseEntity.accepted().body(usuarioservice.actualizarusuario(usuario));
+			
 	}
 	
 /*	
