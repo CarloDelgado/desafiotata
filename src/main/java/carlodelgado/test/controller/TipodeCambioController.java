@@ -75,14 +75,14 @@ public class TipodeCambioController {
 	
 	@PutMapping( "/update/{idusuario}")
 	
-	public ResponseEntity<Usuario> updateusuarios(  @PathVariable int idusuario , @RequestBody  Usuario usuario ) {
+	public ResponseEntity<Usuario> updateusuarios(@PathVariable int idusuario , @RequestBody  Usuario usuario ) {
 		
 		usuario.setId(idusuario);
 		Usuario usuarios = new Usuario();
 		usuarios = usuarioservice.get(idusuario);
 		usuarios.setName(usuario.getName());
 		
-	return ResponseEntity.accepted().body(usuarioservice.actualizarusuario(usuario));
+	return ResponseEntity.status(HttpStatus.CREATED).body(usuarioservice.actualizarusuario(usuario));
 			
 	}
 	
