@@ -1,34 +1,28 @@
 package carlodelgado.test.controller;
 
-import java.security.Provider.Service;
-import java.util.List;
 
-import javax.lang.model.element.Name;
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigureOrder;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.StreamingHttpOutputMessage.Body;
+
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
-import carlodelgado.test.model.TipoCambio;
-import carlodelgado.test.model.TipoCambioxMonedaOrigen;
+
+
 import carlodelgado.test.model.Usuario;
 import carlodelgado.test.service.UsuarioService;
-import carlodelgado.test.service.impl.UsuarioServiceImpl;
+
 
 @Controller
 @RequestMapping("/tipodecambio")
@@ -75,7 +69,7 @@ public class TipodeCambioController {
 	
 	@PutMapping( "/update/{idusuario}")
 	
-	public ResponseEntity<Usuario> updateusuarios(@PathVariable int idusuario , @RequestBody  Usuario usuario ) {
+	public ResponseEntity<Usuario> updateusuarios(@PathVariable int idusuario , @RequestBody Usuario usuario) {
 		
 		usuario.setId(idusuario);
 		Usuario usuarios = new Usuario();
